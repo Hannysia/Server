@@ -61,7 +61,7 @@ public class ServerApp extends Application {
                 serverController = loader.getController();
                 serverController.setServer(server);
                 Scene scene = new Scene(root);
-                scene.getStylesheets().add(Objects.requireNonNull(ServerApp.class.getResource("/annaKnysh/serverside/server-styles.css")).toExternalForm());
+                scene.getStylesheets().add(Objects.requireNonNull(ServerApp.class.getResource("/annaKnysh/serverside/css/chat.css")).toExternalForm());
                 primaryStage.setTitle("Server");
                 primaryStage.setScene(scene);
                 System.out.println(server.getListeners());
@@ -103,5 +103,9 @@ public class ServerApp extends Application {
             alert.setContentText(message);
             alert.showAndWait();
         });
+    }
+    public static void close(){
+        Platform.exit();
+        primaryStage.close();
     }
 }

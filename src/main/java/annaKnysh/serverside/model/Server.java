@@ -40,18 +40,12 @@ public class Server extends WebSocketServer implements IServer {
         return instance;
     }
 
-    void notifyListenersWithLog(String message, String styleClass) {
-        listeners.forEach(listener -> listener.displayLogMessage(message, styleClass));
-    }
 
     @Override
     public void onStart() {
         String logMessage = "Server started successfully on port: " + getPort();
         System.out.println(logMessage);
-
-
         updateChatList();
-        notifyListenersWithLog(logMessage, "log-message-color-success");
     }
 
     @Override
@@ -59,7 +53,6 @@ public class Server extends WebSocketServer implements IServer {
         connections.add(conn);
         String logMessage = "New connection: " + getPortConn(conn);
         System.out.println(logMessage);
-        notifyListenersWithLog(logMessage, "log-message-color-success");
     }
 
     @Override
@@ -67,7 +60,6 @@ public class Server extends WebSocketServer implements IServer {
         connections.remove(conn);
         String logMessage = "Closed connection: " + getPortConn(conn);
         System.out.println(logMessage);
-        notifyListenersWithLog(logMessage, "log-message-color-warning");
     }
 
     @Override
@@ -78,7 +70,6 @@ public class Server extends WebSocketServer implements IServer {
         int port = conn != null ? conn.getRemoteSocketAddress().getPort() : 0;
         String logMessage = "Error from " + port + ": " + ex.getMessage();
         System.out.println(logMessage);
-        notifyListenersWithLog(logMessage, "log-message-color-info");
     }
 
     void updateChatList() {
@@ -197,7 +188,6 @@ public class Server extends WebSocketServer implements IServer {
             conn.send(responseXml);
         } catch (JAXBException e) {
             String logmessage = "Error serializing chat list: " + e.getMessage();
-            notifyListenersWithLog(logmessage, "log-message-color-info");
             conn.send("Error processing your request for chat list");
         }
         updateChatList();

@@ -37,10 +37,7 @@ public class ServerController implements IServerListener, IServerController {
     private VBox messagesArea;
     @FXML
     private ScrollPane messageScrollPane;
-    @FXML
-    private ScrollPane logScrollPane;
-    @FXML
-    private VBox logMessagesArea;
+
     private IServer server;
     private int currentChatId = -1;
     private LocalDate currentDisplayedDate = null;
@@ -79,8 +76,8 @@ public class ServerController implements IServerListener, IServerController {
             }
         });
 
-        String stylesheet = Objects.requireNonNull(getClass().getResource("/annaKnysh/serverside/server-styles.css")).toExternalForm();
-        logScrollPane.getStylesheets().add(stylesheet);
+        String stylesheet = Objects.requireNonNull(getClass().getResource("/annaKnysh/serverside/css/chat.css")).toExternalForm();
+
         chatListView.getStylesheets().add(stylesheet);
         messageScrollPane.getStylesheets().add(stylesheet);
         chatListView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -97,14 +94,12 @@ public class ServerController implements IServerListener, IServerController {
         });
 
         messageScrollPane.setFitToWidth(true);
-        logScrollPane.setFitToWidth(true);
     }
 
     private void loadMessagesForChat(int chatId) {
         messagesArea.getChildren().clear();
         processMessagesResponse(server.processServerGetMessagesRequest(chatId));
     }
-
     private void processMessagesResponse(String xmlMessage) {
         try {
             JAXBContext context = JAXBContext.newInstance(MessagesResponse.class);
@@ -113,7 +108,6 @@ public class ServerController implements IServerListener, IServerController {
             MessagesResponse response = (MessagesResponse) unmarshaller.unmarshal(reader);
             updateMessagesArea(response.getMessages());
         } catch (Exception e) {
-            displayLogMessage("Error parsing messages: " + e.getMessage(), "tan");
         }
     }
 
@@ -144,14 +138,14 @@ public class ServerController implements IServerListener, IServerController {
     private void addDateLabelIfNecessary(LocalDate messageDate) {
         if (currentDisplayedDate == null || !currentDisplayedDate.equals(messageDate)) {
             currentDisplayedDate = messageDate;
-            String formattedDate = InterfaceFactory.formatDate(messageDate);
-            Label dateLabel = InterfaceFactory.createDateLabel(formattedDate);
-            HBox dateBox = InterfaceFactory.createDateBox(dateLabel);
-            messagesArea.getChildren().add(dateBox);
+            // Create the date label using the corrected method
+            HBox dateLabel = InterfaceFactory.createDateLabel(messageDate);
+            messagesArea.getChildren().add(dateLabel);
         }
     }
 
     private void addMessageBox(Message message, LocalDateTime timestamp) {
+        // Assume usernameFirst is known and passed to addMessageBox
         VBox messageBox = InterfaceFactory.createMessageBox(message, timestamp, usernameFirst);
         messagesArea.getChildren().add(messageBox);
     }
@@ -248,7 +242,7 @@ public class ServerController implements IServerListener, IServerController {
     private void handleMessage(WebSocket conn, String input) {
         try {
             Message msg = XMLUtility.fromXML(input, Message.class);
-            String logMessage = "Message from " + msg.getFrom() + " to " + msg.getTo() + ": " + msg.getContent();
+
             server.notifyListenersWithMessage(msg);
             server.sendDirectMessage(msg);
             server.recordMessageInDatabase(msg);
@@ -270,14 +264,7 @@ public class ServerController implements IServerListener, IServerController {
         server.updateDatabase(info.getUsername(), server.getPortConn(conn));
     }
 
-    @Override
-    public void displayLogMessage(String text, String styleClass) {
-        Platform.runLater(() -> {
-            Label logLabel = new Label(text);
-            logLabel.getStyleClass().addAll("log-message", styleClass);
-            logMessagesArea.getChildren().add(logLabel);
-        });
-    }
+
 
     @Override
     public void clearListeners() {

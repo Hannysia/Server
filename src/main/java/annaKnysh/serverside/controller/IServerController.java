@@ -11,16 +11,9 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface IServerController {
     void setServer(IServer server);
-
     void updateChatList(List<ChatDisplayData> chats);
-
     void onMessage(WebSocket conn, String input) throws JAXBException;
-
-    void displayLogMessage(String text, String styleClass);
-
     void clearListeners();
-
     boolean isCurrentChat(int chatId);
-
     void displayMessage(Message message);
 }

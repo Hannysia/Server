@@ -1,0 +1,125 @@
+.rightContainer{
+    -fx-padding: 10 0;
+}
+
+.sidebar {
+    -fx-background-color: #E0F7FA;
+    /*-fx-padding: 10;*/
+}
+
+.usernameHeader {
+    -fx-background-color: #bbe0ee;
+    -fx-padding: 10;
+    /*-fx-border-width: 0 0 1 0;*/
+    /*-fx-border-color: #bbe0ee;*/
+}
+
+.usernameLabel {
+    -fx-text-fill: #7f7e7f;
+    -fx-font-size: 14pt;
+}
+
+.message-text{
+    -fx-fill: black;
+    -fx-padding: 0 5 0 5;
+}
+.message-text-flow {
+    -fx-padding: 0 0 0 0;
+}
+
+
+items {
+    /*-fx-background-color: #487484;*/
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 0;
+    /*-fx-border-color: #A4C3B2;*/
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.list-cell:selected {
+    -fx-background-color: #c2e0ec;
+    -fx-text-fill: black;
+}
+
+.list-cell:empty {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+.list-cell{
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.userName{
+    -fx-padding: 0 45;
+    -fx-font-weight: 800;
+}
+
+.message_info{
+    -fx-padding: 0 5;
+}
+
+.userIcon{
+    -fx-padding: 0 5 0 5;
+}
+
+.bodyMessageLeft {
+    -fx-padding: 5 10 0 10;
+    -fx-background-color: #E0F7FA;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    /*-fx-max-width: 250; !* Максимальна ширина контейнера *!*/
+}
+
+.date-label {
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-padding: 5;
+    -fx-background-radius: 10;
+    -fx-text-fill: black;
+}
+.time-label {
+    -fx-font-size: 10;
+    -fx-text-fill: #04471C;
+}
+.textBodyMessage {
+    -fx-padding: 1 10 1 10;
+    -fx-wrap-text: true; /* Переконатися, що текст переноситься */
+
+}
+
+.bodyMessageRight{
+    -fx-padding: 5 10 0 10;
+    -fx-background-color: #f2e0b3;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    /*-fx-max-width: 250; !* Максимальна ширина контейнера *!*/
+}
+
+/*.messageFieldCont {*/
+/*    !*-fx-padding: 10 25;*!*/
+/*}*/
+
+/*.messageField {*/
+/*    !*-fx-padding: 5;*!*/
+/*    !*-fx-background-radius: 12; !* Радіус фону *!*!*/
+/*    !*-fx-border-radius: 12;     !* Радіус межі *!*!*/
+/*    -fx-pref-height: 30;      !* Початкова висота *!*/
+/*    -fx-max-height: 100;      !* Максимальна висота *!*/
+/*    -fx-border-color: transparent;*/
+/*}*/
+
+/*.content {*/
+/*    -fx-background-color: #c2e0ec;*/
+/*    -fx-padding: 4 20;*/
+/*    !*-fx-background-insets: 5; !* Внутрішні відступи для заокругленого фону *!*!*/
+/*    -fx-background-radius: 25; !* Заокруглений фон *!*/
+/*    -fx-pref-height: 30;      !* Початкова висота *!*/
+
+/*}*/

@@ -73,4 +73,7 @@ public class ConfigController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    public void close(){
+        ServerApp.close();
+    }
 }

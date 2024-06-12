@@ -11,5 +11,4 @@ public interface IServerListener {
     void onMessage(WebSocket conn, String input) throws JAXBException;
     void updateChatList(List<ChatDisplayData> chats);
     void displayMessage(Message message);
-    void displayLogMessage(String message, String styleClass);
 }

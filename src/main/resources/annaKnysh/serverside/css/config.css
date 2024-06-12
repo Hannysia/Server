@@ -1,0 +1,47 @@
+.container{
+    -fx-border-color: black;
+    -fx-border-radius: 18;
+    -fx-background-radius: 18;
+    -fx-border-width: 1;
+    -fx-background-color: #fff;
+
+}
+
+.buttons {
+    -fx-padding: 40 20 10 20; /* Встановлення внутрішніх відступів (top, right, bottom, left) */
+}
+
+.addressField{
+    -fx-padding: 50 20 10 20;
+}
+.usernameField, .passwordField{
+    -fx-padding: 10 20 10 20;
+
+}
+
+.textField{
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-background-color: #d4e9f3;
+    -fx-text-fill: #000;
+    -fx-prompt-text-fill: #000;
+    -fx-padding: 0 0 0 15;
+
+}
+
+.cancelButton{
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-background-color: #e8e8e9;
+    -fx-prompt-text-fill: #000;
+
+}
+
+.nextButton{
+    -fx-arc-width: 50;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-background-color: #f2e0b3;
+    -fx-prompt-text-fill: #000;
+}
+
